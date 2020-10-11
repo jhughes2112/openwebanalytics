@@ -22,12 +22,12 @@ ENV OWA_CACHE_OBJECTS  "true"
 
 RUN apk --no-cache add php7-zip php7-simplexml php7-imap php7-mbstring curl && \
 	rm /var/www/html/* && \
-	wget https://github.com/Open-Web-Analytics/Open-Web-Analytics/archive/${OWA_VERSION}.tar.gz  -O /owa.tar.gz && \
+	wget https://github.com/Open-Web-Analytics/Open-Web-Analytics/releases/download/${OWA_VERSION}/owa_${OWA_VERSION}_packaged.tar	-O /owa.tar && \
 	mkdir -p /var/lib/php/session && \
 	mkdir -p /var/www/html/webserver-configs && \
-	tar zxf /owa.tar.gz --directory /var/www/ && \
-	mv /var/www/Open-Web-Analytics-${OWA_VERSION} /var/www/owa && \
-	rm /owa.tar.gz && \
+	mkdir -p /var/www/owa && \
+	tar xf /owa.tar --directory /var/www/owa && \
+	rm /owa.tar && \
     ln -s /var/www/html/webserver-configs/owa-nginx.conf /etc/nginx/conf.d/owa-nginx.conf
 ADD owa-nginx.conf /var/www/owa/webserver-configs/owa-nginx.conf
 ADD owa-nginx.conf /var/www/html/webserver-configs/owa-nginx.conf
