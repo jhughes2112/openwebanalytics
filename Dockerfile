@@ -3,7 +3,7 @@ FROM trafex/alpine-nginx-php7:latest
 USER root
 
 ARG OWA_VERSION
-ENV OWA_VERSION 1.7.0
+ENV OWA_VERSION 1.7.7
 
 # ENV for OWA
 ENV OWA_DB_TYPE        "mysql"
