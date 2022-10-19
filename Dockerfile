@@ -39,4 +39,5 @@ RUN chmod a+rx /startup.sh && \
 	chown -R nobody:nobody /var/lib/php/session
 
 USER nobody
+EXPOSE 8000
 CMD [ "/startup.sh" ]
